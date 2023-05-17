@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UserDetailViewModelDelegate {
+protocol UserDetailViewModelDelegate: AnyObject {
     func onUsersFetchSuccess(_ userDetail: [UserDetailModel])
     func onUsersFetchError(_ errorTitle: String, _ errorMessage: String)
 }
@@ -16,7 +16,7 @@ class UserDetailViewModel: UserDetailViewModelProtocol {
     
     // MARK: - Public Properties
     
-    var delegate: UserDetailViewModelDelegate?
+    weak var delegate: UserDetailViewModelDelegate?
     
     // MARK: - Private Properties
     
