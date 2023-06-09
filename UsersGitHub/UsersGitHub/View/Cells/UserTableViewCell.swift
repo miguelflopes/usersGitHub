@@ -9,7 +9,7 @@ import Combine
 import Foundation
 import UIKit
 
-class UserTableViewCell: UITableViewCell {
+final class UserTableViewCell: UITableViewCell {
     
     // MARK: - Private View Elements
     
@@ -37,17 +37,14 @@ class UserTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupLayout()
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupLayout()
     }
     
-    // MARK: - Private Methods
-    
-    private func setupLayout() {
+    override func layoutSubviews() {
+        super.layoutSubviews()
         selectionStyle = .none
         stackView.addArrangedSubview(userLogin)
         stackView.addArrangedSubview(avatarImage)
@@ -62,6 +59,8 @@ class UserTableViewCell: UITableViewCell {
             avatarImage.widthAnchor.constraint(equalToConstant: 70)
         ])
     }
+    
+    // MARK: - Private Methods
     
     private func image(url: String) {
         guard let url = URL(string: url) else { return }
@@ -81,5 +80,6 @@ class UserTableViewCell: UITableViewCell {
     func setupView(_ users: UsersModel) {
         userLogin.text = users.login?.firstUppercased
         image(url: users.avatarUrl ?? String())
+        layoutIfNeeded()
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - DownloadImage
 
-class DownloadImage {
+final class DownloadImage {
     func download(url: URL, toFile file: URL, completion: @escaping (Error?) -> Void) {
         // Download the remote URL to a file
         let task = URLSession.shared.downloadTask(with: url) {

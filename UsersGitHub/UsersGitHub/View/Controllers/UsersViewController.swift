@@ -6,21 +6,25 @@
 //
 
 import Foundation
-
 import UIKit
 
-class UsersViewController: UIViewController {
+final class UsersViewController: UIViewController {
     
     // MARK: - Private Properties
     
     private var viewModel: UsersViewModelProtocol?
     private var users: [UsersModel]?
-    private let delayStartSearch: TimeInterval = 0.8
     private var searchDelay: Timer?
+    private let delayStartSearch: TimeInterval = 0.8
     
+    // MARK: - Public Properties
+    
+    var openDetails: ((_ userLogin: String) -> ())?
+    var openError: ((_ title: String, _ message: String) -> ())?
+
     // MARK: - Private View Elements
     
-    private lazy var loadingView = ShimmerLoadingView()
+    private lazy var loadingView = LoadingView()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -46,11 +50,10 @@ class UsersViewController: UIViewController {
     
     // MARK: - Initializer
     
-    init(viewModel: UsersViewModelProtocol) {
+    init(viewModel: UsersViewModelProtocol = UsersViewModel()) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
         self.viewModel?.delegate = self
-        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -64,14 +67,8 @@ class UsersViewController: UIViewController {
         fetchUsers()
     }
     
-    // MARK: - Private Methods
-    
-    private func fetchUsers() {
-        viewModel?.fetchUsers()
-        loadingView.show(on: view)
-    }
-    
-    private func setupLayout() {
+    override func loadView() {
+        super.loadView()
         view.backgroundColor = .white
         title = StringHelper.title
         view.addSubview(searchBar)
@@ -80,12 +77,19 @@ class UsersViewController: UIViewController {
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
-            
+        
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    // MARK: - Private Methods
+    
+    private func fetchUsers() {
+        loadingView.show(on: view)
+        viewModel?.fetchUsers()
     }
     
     @objc
@@ -122,9 +126,7 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let userLogin = users?[indexPath.row].login else { return }
-        let userDetailViewModel = UserDetailViewModel(userName: userLogin)
-        let viewController = UserDetailViewController(userName: userLogin, viewModel: userDetailViewModel)
-        navigationController?.pushViewController(viewController, animated: true)
+        openDetails?(userLogin)
     }
 }
 
@@ -141,8 +143,6 @@ extension UsersViewController: UsersViewModelDelegate {
     
     func onUsersFetchError(_ errorTitle: String, _ errorMessage: String) {
         loadingView.hide()
-        AlertController().showAlert(title: errorTitle, message: errorMessage, style: .default, navigation: navigationController ?? UINavigationController()) {
-            self.navigationController?.popViewController(animated: true)
-        }
+        openError?(errorTitle, errorMessage)
     }
 }

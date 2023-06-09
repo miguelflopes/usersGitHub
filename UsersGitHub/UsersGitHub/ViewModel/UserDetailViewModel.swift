@@ -12,7 +12,7 @@ protocol UserDetailViewModelDelegate: AnyObject {
     func onUsersFetchError(_ errorTitle: String, _ errorMessage: String)
 }
 
-class UserDetailViewModel: UserDetailViewModelProtocol {
+final class UserDetailViewModel: UserDetailViewModelProtocol {
     
     // MARK: - Public Properties
     
@@ -33,7 +33,7 @@ class UserDetailViewModel: UserDetailViewModelProtocol {
     /// Call manager to fetch users details in api
     func fetchUserDetails() {
         manager.fetchUserDetails(userName: userName) { [weak self] result in
-            sleep(3) // Simule loading
+            sleep(1) // Force loading
             guard let self = self else { return }
             switch result {
             case .success(let userDetail):

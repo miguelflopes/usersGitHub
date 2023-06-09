@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserManager: UserManagerProtocol {
+final class UserManager: UserManagerProtocol {
     private let session: URLSession
     private let task = OperationQueue()
     

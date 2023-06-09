@@ -11,7 +11,6 @@ protocol UserDetailViewModelProtocol {
     
     // MARK: - Properties
     
-//    var model: UsersResponseModel { get }
     var delegate: UserDetailViewModelDelegate? { get set }
     
     // MARK: - Methods

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserOperation<T: Decodable>: Operation {
+final class UserOperation<T: Decodable>: Operation {
     private let session: URLSession
     private let url: URL
     var result: T?

@@ -12,7 +12,7 @@ protocol UsersViewModelDelegate: AnyObject {
     func onUsersFetchError(_ errorTitle: String, _ errorMessage: String)
 }
 
-class UsersViewModel: UsersViewModelProtocol {
+final class UsersViewModel: UsersViewModelProtocol {
     
     // MARK: - Public Properties
     
@@ -34,7 +34,7 @@ class UsersViewModel: UsersViewModelProtocol {
     /// Call manager to fetch users in api
     func fetchUsers() {
         manager.fetchUser { [weak self] result in
-            sleep(3) // Simule loading
+            sleep(1) // Force loading
             guard let self = self else { return }
             switch result {
             case .success(let users):
@@ -45,16 +45,16 @@ class UsersViewModel: UsersViewModelProtocol {
         }
     }
     
-    
     /// Call manager to search the textField
     /// - Parameter search: TextField inputs
     func search(search: String) {
         manager.searchUser(search: search) { [weak self] result in
-            sleep(3) // Simule loading
+            sleep(1) // Force loading
             guard let self = self else { return }
             switch result {
             case .success(let result):
-                guard let searchUsers = result.users, !searchUsers.isEmpty else { self.handlerSearchError(); return }
+                guard let searchUsers = result.users, !searchUsers.isEmpty
+                else { self.handlerSearchError(); return }
                 self.delegate?.onUsersFetchSuccess(searchUsers)
             case .failure(let error):
                 self.handlerError(error)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62429A922A2144AF007CEE76 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62429A912A2144AF007CEE76 /* MainCoordinator.swift */; };
+		62429A952A2241D8007CEE76 /* MainCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62429A942A2241D8007CEE76 /* MainCoordinatorTests.swift */; };
 		62FA7FC82A14078B00E327F1 /* UserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7F9D2A14078600E327F1 /* UserOperation.swift */; };
 		62FA7FC92A14078B00E327F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FA02A14078700E327F1 /* Constants.swift */; };
 		62FA7FCA2A14078B00E327F1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FA12A14078700E327F1 /* NetworkError.swift */; };
@@ -19,9 +21,9 @@
 		62FA7FD12A14078B00E327F1 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FAB2A14078700E327F1 /* UserDetailViewModel.swift */; };
 		62FA7FD22A14078B00E327F1 /* UsersViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FAC2A14078700E327F1 /* UsersViewModelProtocol.swift */; };
 		62FA7FD32A14078B00E327F1 /* UserDetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FAD2A14078700E327F1 /* UserDetailViewModelProtocol.swift */; };
-		62FA7FD42A14078B00E327F1 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FB02A14078800E327F1 /* UIAlertController.swift */; };
+		62FA7FD42A14078B00E327F1 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FB02A14078800E327F1 /* AlertController.swift */; };
 		62FA7FD52A14078B00E327F1 /* DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FB22A14078800E327F1 /* DownloadImage.swift */; };
-		62FA7FD62A14078B00E327F1 /* ShimmerLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FB42A14078800E327F1 /* ShimmerLoadingView.swift */; };
+		62FA7FD62A14078B00E327F1 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FB42A14078800E327F1 /* LoadingView.swift */; };
 		62FA7FD72A14078B00E327F1 /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FB62A14078800E327F1 /* UsersModel.swift */; };
 		62FA7FD82A14078B00E327F1 /* SearchUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FB72A14078800E327F1 /* SearchUserModel.swift */; };
 		62FA7FD92A14078B00E327F1 /* UserDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FB82A14078800E327F1 /* UserDetailModel.swift */; };
@@ -59,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62429A912A2144AF007CEE76 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		62429A942A2241D8007CEE76 /* MainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorTests.swift; sourceTree = "<group>"; };
 		62FA7F692A1406F500E327F1 /* UsersGitHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UsersGitHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62FA7F7A2A1406F700E327F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62FA7F7F2A1406F700E327F1 /* UsersGitHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsersGitHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,9 +79,9 @@
 		62FA7FAB2A14078700E327F1 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
 		62FA7FAC2A14078700E327F1 /* UsersViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewModelProtocol.swift; sourceTree = "<group>"; };
 		62FA7FAD2A14078700E327F1 /* UserDetailViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewModelProtocol.swift; sourceTree = "<group>"; };
-		62FA7FB02A14078800E327F1 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		62FA7FB02A14078800E327F1 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		62FA7FB22A14078800E327F1 /* DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadImage.swift; sourceTree = "<group>"; };
-		62FA7FB42A14078800E327F1 /* ShimmerLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimmerLoadingView.swift; sourceTree = "<group>"; };
+		62FA7FB42A14078800E327F1 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		62FA7FB62A14078800E327F1 /* UsersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
 		62FA7FB72A14078800E327F1 /* SearchUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserModel.swift; sourceTree = "<group>"; };
 		62FA7FB82A14078800E327F1 /* UserDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailModel.swift; sourceTree = "<group>"; };
@@ -122,6 +126,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62429A8C2A1D2A4E007CEE76 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				62429A912A2144AF007CEE76 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		62429A932A2241C5007CEE76 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				62429A942A2241D8007CEE76 /* MainCoordinatorTests.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		62FA7F602A1406F500E327F1 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +164,7 @@
 		62FA7F6B2A1406F500E327F1 /* UsersGitHub */ = {
 			isa = PBXGroup;
 			children = (
+				62429A8C2A1D2A4E007CEE76 /* Coordinator */,
 				62FA7FAE2A14078800E327F1 /* Components */,
 				62FA7F9E2A14078700E327F1 /* Infrastructure */,
 				62FA7FC02A14078A00E327F1 /* Manager */,
@@ -159,6 +180,7 @@
 		62FA7F822A1406F700E327F1 /* UsersGitHubTests */ = {
 			isa = PBXGroup;
 			children = (
+				62429A932A2241C5007CEE76 /* Coordinator */,
 				62FA7FEA2A14079500E327F1 /* Manager */,
 				62FA7FE42A14079300E327F1 /* Mock */,
 				62FA7FE72A14079400E327F1 /* ViewModel */,
@@ -228,7 +250,7 @@
 			children = (
 				62FA7FAF2A14078800E327F1 /* Alerts */,
 				62FA7FB12A14078800E327F1 /* DownloadImage */,
-				62FA7FB32A14078800E327F1 /* ShimmerLoading */,
+				62FA7FB32A14078800E327F1 /* LoadingView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -236,7 +258,7 @@
 		62FA7FAF2A14078800E327F1 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				62FA7FB02A14078800E327F1 /* UIAlertController.swift */,
+				62FA7FB02A14078800E327F1 /* AlertController.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -249,12 +271,12 @@
 			path = DownloadImage;
 			sourceTree = "<group>";
 		};
-		62FA7FB32A14078800E327F1 /* ShimmerLoading */ = {
+		62FA7FB32A14078800E327F1 /* LoadingView */ = {
 			isa = PBXGroup;
 			children = (
-				62FA7FB42A14078800E327F1 /* ShimmerLoadingView.swift */,
+				62FA7FB42A14078800E327F1 /* LoadingView.swift */,
 			);
-			path = ShimmerLoading;
+			path = LoadingView;
 			sourceTree = "<group>";
 		};
 		62FA7FB52A14078800E327F1 /* Model */ = {
@@ -471,10 +493,11 @@
 			files = (
 				62FA7FCE2A14078B00E327F1 /* UIWindow.swift in Sources */,
 				62FA7FD22A14078B00E327F1 /* UsersViewModelProtocol.swift in Sources */,
-				62FA7FD62A14078B00E327F1 /* ShimmerLoadingView.swift in Sources */,
+				62FA7FD62A14078B00E327F1 /* LoadingView.swift in Sources */,
 				62FA7FCF2A14078B00E327F1 /* NSObject.swift in Sources */,
 				62FA7FD12A14078B00E327F1 /* UserDetailViewModel.swift in Sources */,
 				62FA7FDB2A14078B00E327F1 /* UserDetailTableViewCell.swift in Sources */,
+				62429A922A2144AF007CEE76 /* MainCoordinator.swift in Sources */,
 				62FA7FDF2A14078B00E327F1 /* UserManager.swift in Sources */,
 				62FA7FD32A14078B00E327F1 /* UserDetailViewModelProtocol.swift in Sources */,
 				62FA7FCB2A14078B00E327F1 /* StringHelper.swift in Sources */,
@@ -494,7 +517,7 @@
 				62FA7FD82A14078B00E327F1 /* SearchUserModel.swift in Sources */,
 				62FA7FC92A14078B00E327F1 /* Constants.swift in Sources */,
 				62FA7FD72A14078B00E327F1 /* UsersModel.swift in Sources */,
-				62FA7FD42A14078B00E327F1 /* UIAlertController.swift in Sources */,
+				62FA7FD42A14078B00E327F1 /* AlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +530,7 @@
 				62FA7FEE2A14079700E327F1 /* UsersViewModelTests.swift in Sources */,
 				62FA7FEF2A14079700E327F1 /* UserDetailViewModelTests.swift in Sources */,
 				62FA7FEC2A14079700E327F1 /* MockData.swift in Sources */,
+				62429A952A2241D8007CEE76 /* MainCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

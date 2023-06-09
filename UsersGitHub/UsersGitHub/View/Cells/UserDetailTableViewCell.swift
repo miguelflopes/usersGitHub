@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class UserDetailTableViewCell: UITableViewCell {
+final class UserDetailTableViewCell: UITableViewCell {
     
     // MARK: - Private View Elements
     
@@ -68,22 +68,18 @@ class UserDetailTableViewCell: UITableViewCell {
         return label
     }()
     
-    
     // MARK: - Initializers
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupLayout()
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupLayout()
     }
     
-    // MARK: - Private Methods
-    
-    private func setupLayout() {
+    override func layoutSubviews() {
+        super.layoutSubviews()
         nameStackView.addArrangedSubview(nameRepositoryLabel)
         nameStackView.addArrangedSubview(descriptionRepositoryLabel)
         watchersStackView.addArrangedSubview(watchersLabel)
@@ -115,5 +111,6 @@ class UserDetailTableViewCell: UITableViewCell {
         watchersLabel.backgroundColor = userDetail.watchers == .zero ? .red : .green
         let date = userDetail.updatedAt?.convertStringToDate()
         updateLabel.text = StringHelper.updatedLast.uppercased() + (date ?? String())
+        layoutIfNeeded()
     }
 }

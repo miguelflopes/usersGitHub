@@ -15,9 +15,13 @@ final class UserDetailViewController: UIViewController {
     private var viewModel: UserDetailViewModelProtocol?
     private var userDetail: [UserDetailModel]?
     
+    // MARK: - Public Properties
+    
+    var openError: ((_ title: String, _ message: String) -> ())?
+    
     // MARK: - Private View Elements
     
-    private lazy var loadingView = ShimmerLoadingView()
+    private lazy var loadingView = LoadingView()
     
     private lazy var avatarLabel: UILabel = {
         var label = UILabel()
@@ -44,7 +48,6 @@ final class UserDetailViewController: UIViewController {
         self.viewModel = viewModel
         self.viewModel?.delegate = self
         title = userName.firstUppercased
-        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -58,14 +61,8 @@ final class UserDetailViewController: UIViewController {
         fetchUserDetails()
     }
     
-    // MARK: - Private Methods
-    
-    private func fetchUserDetails() {
-        viewModel?.fetchUserDetails()
-        loadingView.show(on: self.view)
-    }
-    
-    private func setupLayout() {
+    override func loadView() {
+        super.loadView()
         view.backgroundColor = .white
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -74,6 +71,13 @@ final class UserDetailViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    // MARK: - Private Methods
+    
+    private func fetchUserDetails() {
+        loadingView.show(on: self.view)
+        viewModel?.fetchUserDetails()
     }
 }
 
@@ -105,8 +109,6 @@ extension UserDetailViewController: UserDetailViewModelDelegate {
     
     func onUsersFetchError(_ errorTitle: String, _ errorMessage: String) {
         self.loadingView.hide()
-        AlertController().showAlert(title: errorTitle, message: errorMessage, style: .default, navigation: navigationController ?? UINavigationController()) {
-            self.navigationController?.popViewController(animated: true)
-        }
+        openError?(errorTitle, errorMessage)
     }
 }
