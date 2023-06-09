@@ -12,6 +12,7 @@ class UsersViewModelTests: XCTestCase {
     
     // MARK: - Properties
     
+    var coodinator: MainCoordinator!
     var viewModel: UsersViewModel!
     var mockManager: UserManagerMock!
     var mockDelegate: UsersViewModelDelegateMock!
@@ -23,12 +24,14 @@ class UsersViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         mockManager = UserManagerMock()
-        viewModel = UsersViewModel(manager: mockManager)
+        coodinator = MainCoordinator(navigationController: MockNavigationController())
+        viewModel = UsersViewModel(coordinator: coodinator, manager: mockManager)
         mockDelegate = UsersViewModelDelegateMock()
         viewModel.delegate = mockDelegate
     }
     
     override func tearDown() {
+        coodinator = nil
         viewModel = nil
         mockManager = nil
         mockDelegate = nil

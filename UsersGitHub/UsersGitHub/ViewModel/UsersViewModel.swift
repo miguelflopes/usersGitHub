@@ -17,6 +17,7 @@ final class UsersViewModel: UsersViewModelProtocol {
     // MARK: - Public Properties
     
     weak var delegate: UsersViewModelDelegate?
+    var coordinator: MainCoordinatorProtocol
     
     // MARK: - Private Properties
     
@@ -24,9 +25,9 @@ final class UsersViewModel: UsersViewModelProtocol {
     
     // MARK: - Initializer
     
-    init(manager: UserManagerProtocol = UserManager()) {
+    init(coordinator: MainCoordinatorProtocol, manager: UserManagerProtocol = UserManager()) {
         self.manager = manager
-        
+        self.coordinator = coordinator
     }
     
     // MARK: - Public Methods

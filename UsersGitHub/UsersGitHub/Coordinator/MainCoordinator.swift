@@ -2,7 +2,7 @@
 //  MainCoordinator.swift
 //  UsersGitHub
 //
-//  Created by HITSS on 26/05/23.
+//  Created by Miguel on 26/05/23.
 //
 
 import Foundation
@@ -12,6 +12,8 @@ protocol MainCoordinatorProtocol {
     var navigationController: UINavigationController { get set }
 
     func start()
+    func startDetails(_ userLogin: String)
+    func openError(_ title: String, _ message: String)
 }
 
 final class MainCoordinator: MainCoordinatorProtocol {
@@ -26,29 +28,25 @@ final class MainCoordinator: MainCoordinatorProtocol {
         startFlowUserViewController()
     }
     
+    // MARK: - Flow User
+    
     private func startFlowUserViewController() {
-        let usersViewController = UsersViewController()
-        usersViewController.openDetails = openFlowDetails
-        usersViewController.openError = openError
+        let viewModel = UsersViewModel(coordinator: self)
+        let usersViewController = UsersViewController(viewModel: viewModel)
         navigationController.pushViewController(usersViewController, animated: true)
     }
-}
-
-// MARK: - Flow User Details
-
-extension MainCoordinator {
-    private func openFlowDetails(_ userLogin: String) {
-        let userDetailViewModel = UserDetailViewModel(userName: userLogin)
+    
+    // MARK: - Flow User Details
+    
+    func startDetails(_ userLogin: String) {
+        let userDetailViewModel = UserDetailViewModel(userName: userLogin, coordinator: self)
         let userDetailViewController = UserDetailViewController(userName: userLogin, viewModel: userDetailViewModel)
-        userDetailViewController.openError = openError
         navigationController.pushViewController(userDetailViewController, animated: true)
     }
-}
-
-// MARK: - Error
-
-extension MainCoordinator {
-    private func openError(_ title: String, _ message: String) {
+    
+    // MARK: - Show Error
+    
+    func openError(_ title: String, _ message: String) {
         AlertController().showAlert(title: title, message: message, style: .default, navigation: navigationController) {
             self.navigationController.popViewController(animated: true)
         }

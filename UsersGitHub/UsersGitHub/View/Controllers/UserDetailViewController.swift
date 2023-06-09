@@ -14,11 +14,7 @@ final class UserDetailViewController: UIViewController {
     
     private var viewModel: UserDetailViewModelProtocol?
     private var userDetail: [UserDetailModel]?
-    
-    // MARK: - Public Properties
-    
-    var openError: ((_ title: String, _ message: String) -> ())?
-    
+            
     // MARK: - Private View Elements
     
     private lazy var loadingView = LoadingView()
@@ -109,6 +105,6 @@ extension UserDetailViewController: UserDetailViewModelDelegate {
     
     func onUsersFetchError(_ errorTitle: String, _ errorMessage: String) {
         self.loadingView.hide()
-        openError?(errorTitle, errorMessage)
+        viewModel?.coordinator.openError(errorTitle, errorMessage)
     }
 }

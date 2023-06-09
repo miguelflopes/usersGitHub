@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		62429A922A2144AF007CEE76 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62429A912A2144AF007CEE76 /* MainCoordinator.swift */; };
 		62429A952A2241D8007CEE76 /* MainCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62429A942A2241D8007CEE76 /* MainCoordinatorTests.swift */; };
+		629CBE9C2A33E44600F3AEFD /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629CBE9B2A33E44600F3AEFD /* MockNavigationController.swift */; };
 		62FA7FC82A14078B00E327F1 /* UserOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7F9D2A14078600E327F1 /* UserOperation.swift */; };
 		62FA7FC92A14078B00E327F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FA02A14078700E327F1 /* Constants.swift */; };
 		62FA7FCA2A14078B00E327F1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA7FA12A14078700E327F1 /* NetworkError.swift */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		62429A912A2144AF007CEE76 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		62429A942A2241D8007CEE76 /* MainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorTests.swift; sourceTree = "<group>"; };
+		629CBE9B2A33E44600F3AEFD /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
 		62FA7F692A1406F500E327F1 /* UsersGitHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UsersGitHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62FA7F7A2A1406F700E327F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62FA7F7F2A1406F700E327F1 /* UsersGitHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsersGitHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,6 +341,7 @@
 		62FA7FE42A14079300E327F1 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				629CBE9B2A33E44600F3AEFD /* MockNavigationController.swift */,
 				62FA7FE52A14079300E327F1 /* MockData.swift */,
 				62FA7FE62A14079300E327F1 /* UserManagerMock.swift */,
 			);
@@ -530,6 +533,7 @@
 				62FA7FEE2A14079700E327F1 /* UsersViewModelTests.swift in Sources */,
 				62FA7FEF2A14079700E327F1 /* UserDetailViewModelTests.swift in Sources */,
 				62FA7FEC2A14079700E327F1 /* MockData.swift in Sources */,
+				629CBE9C2A33E44600F3AEFD /* MockNavigationController.swift in Sources */,
 				62429A952A2241D8007CEE76 /* MainCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

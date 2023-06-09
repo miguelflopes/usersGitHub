@@ -2,7 +2,7 @@
 //  MainCoordinatorTests.swift
 //  UsersGitHubTests
 //
-//  Created by HITSS on 27/05/23.
+//  Created by Miguel on 27/05/23.
 //
 
 @testable import UsersGitHub
@@ -18,49 +18,26 @@ class MainCoordinatorTests: XCTestCase {
 
         XCTAssertTrue(navigationController.viewControllers.count == 1)
         XCTAssertTrue(navigationController.viewControllers.first is UsersViewController)
-
-        let usersViewController = navigationController.viewControllers.first as? UsersViewController
-        XCTAssertNotNil(usersViewController?.openDetails)
     }
 
     func testOpenFlowDetails() {
         let navigationController = MockNavigationController()
         let coordinator = MainCoordinator(navigationController: navigationController)
-
-        let startFlowUserDetail: ((String) -> ()) = ("") -> ()
-        
-        let usersViewController = UsersViewController()
-        usersViewController.openDetails = startFlowUserDetail
-        let userLogin = "john_doe"
-//        coordinator.openFlowDetails(userLogin)
-        
-
+        let userLogin = "Miguel"
+        coordinator.startDetails(userLogin)
         XCTAssertTrue(navigationController.viewControllers.count == 1)
-        XCTAssertTrue(navigationController.viewControllers.first is UserDetailViewController)
-
-        let userDetailViewController = navigationController.viewControllers.first as? UserDetailViewController
-//        XCTAssertEqual(userDetailViewController.userName, userLogin)
-//        XCTAssertNotNil(userDetailViewController.viewModel)
+        XCTAssertTrue(navigationController.viewControllers.last is UserDetailViewController)
+        let userDetailViewController = navigationController.viewControllers.last as? UserDetailViewController
+        XCTAssertEqual(userDetailViewController?.title, userLogin)
     }
 
-    func testStart() {
+    func testOpenError() {
         let navigationController = MockNavigationController()
         let coordinator = MainCoordinator(navigationController: navigationController)
-
-        coordinator.start()
-
-        XCTAssertTrue(navigationController.viewControllers.count == 1)
-        XCTAssertTrue(navigationController.viewControllers.first is UsersViewController)
+        
+        let title = "Error title"
+        let message = "Error description"
+        coordinator.openError(title, message)
+        XCTAssertTrue(navigationController.presentedController is UIAlertController)
     }
 }
-
-// MockNavigationController para simular o comportamento do UINavigationController
-class MockNavigationController: UINavigationController {
-    var pushedViewController: UIViewController?
-    
-    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        pushedViewController = viewController
-        super.pushViewController(viewController, animated: animated)
-    }
-}
-

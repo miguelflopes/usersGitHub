@@ -17,11 +17,6 @@ final class UsersViewController: UIViewController {
     private var searchDelay: Timer?
     private let delayStartSearch: TimeInterval = 0.8
     
-    // MARK: - Public Properties
-    
-    var openDetails: ((_ userLogin: String) -> ())?
-    var openError: ((_ title: String, _ message: String) -> ())?
-
     // MARK: - Private View Elements
     
     private lazy var loadingView = LoadingView()
@@ -50,7 +45,7 @@ final class UsersViewController: UIViewController {
     
     // MARK: - Initializer
     
-    init(viewModel: UsersViewModelProtocol = UsersViewModel()) {
+    init(viewModel: UsersViewModelProtocol) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
         self.viewModel?.delegate = self
@@ -126,7 +121,7 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let userLogin = users?[indexPath.row].login else { return }
-        openDetails?(userLogin)
+        viewModel?.coordinator.startDetails(userLogin)
     }
 }
 
@@ -143,6 +138,6 @@ extension UsersViewController: UsersViewModelDelegate {
     
     func onUsersFetchError(_ errorTitle: String, _ errorMessage: String) {
         loadingView.hide()
-        openError?(errorTitle, errorMessage)
+        viewModel?.coordinator.openError(errorTitle, errorMessage)
     }
 }
