@@ -2,7 +2,7 @@
 //  UsersViewModelTests.swift
 //  UsersGitHubTests
 //
-//  Created by Miguel on 16/05/23.
+//  Created by Miguel on 20/05/23.
 //
 
 @testable import UsersGitHub
