@@ -11,7 +11,7 @@
   4º Clique no usuário para acessar os detalhes e sua lista de repositórios.
   
 
-# Techonolgies
+# Technologies
 - Swift 5.0
 - MVVM-C architecture
 - Images cache
