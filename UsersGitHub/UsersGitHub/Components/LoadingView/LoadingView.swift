@@ -30,6 +30,7 @@ final class LoadingView: UIView {
     
     private func configureView() {
         backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        accessibilityIdentifier = "loadingView"
         addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
@@ -38,12 +39,11 @@ final class LoadingView: UIView {
         ])
     }
     
-    func show(on view: UIView) {
-        frame = view.bounds
-        view.addSubview(self)
+    func show() {
+        self.isHidden = false
     }
-    
-    func hide() {
-        removeFromSuperview()
+
+    func hiden() {
+        self.isHidden = true
     }
 }

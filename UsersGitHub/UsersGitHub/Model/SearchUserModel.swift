@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SearchUserModel: Codable {
+public struct SearchUserModel: Codable, Equatable {
     let totalCount: Int?
     let incompleteResults: Bool?
     let users: [UsersModel]?

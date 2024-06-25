@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol MainCoordinatorProtocol {
+protocol MainCoordinatorProtocol: AnyObject {
     var navigationController: UINavigationController { get set }
 
     func start()
@@ -19,7 +19,7 @@ protocol MainCoordinatorProtocol {
 final class MainCoordinator: MainCoordinatorProtocol {
     
     var navigationController: UINavigationController
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -31,17 +31,28 @@ final class MainCoordinator: MainCoordinatorProtocol {
     // MARK: - Flow User
     
     private func startFlowUserViewController() {
-        let viewModel = UsersViewModel(coordinator: self)
-        let usersViewController = UsersViewController(viewModel: viewModel)
-        navigationController.pushViewController(usersViewController, animated: true)
+        let viewModel = UsersViewModel()
+        let dataSource = UsersDataSource()
+        let view = UserView()
+        let viewController = UsersViewController(viewModel: viewModel,
+                                                 dataSource: dataSource,
+                                                 contentView: view,
+                                                 delegate: self)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     // MARK: - Flow User Details
     
     func startDetails(_ userLogin: String) {
-        let userDetailViewModel = UserDetailViewModel(userName: userLogin, coordinator: self)
-        let userDetailViewController = UserDetailViewController(userName: userLogin, viewModel: userDetailViewModel)
-        navigationController.pushViewController(userDetailViewController, animated: true)
+        let viewModel = UserDetailViewModel(userName: userLogin)
+        let dataSource = UserDetailDataSource()
+        let view = UserDetailView()
+        let detailViewController = UserDetailViewController(userName: userLogin,
+                                                            viewModel: viewModel, 
+                                                            dataSource: dataSource,
+                                                            contentView: view,
+                                                            delegate: self)
+        navigationController.pushViewController(detailViewController, animated: true)
     }
     
     // MARK: - Show Error

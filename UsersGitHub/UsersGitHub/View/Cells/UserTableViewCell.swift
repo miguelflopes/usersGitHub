@@ -5,7 +5,6 @@
 //  Created by Miguel on 15/05/23.
 //
 
-import Combine
 import Foundation
 import UIKit
 
@@ -22,19 +21,22 @@ final class UserTableViewCell: UITableViewCell {
     
     private lazy var userLogin: UILabel = {
         let label = UILabel()
+        label.textColor = .black
+        label.accessibilityIdentifier = "userLogin"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var avatarImage: UIImageView = {
         let image = UIImageView()
+        image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = nil
         return image
     }()
     
     // MARK: - Initializers
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -42,26 +44,38 @@ final class UserTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-    
+
+    override func prepareForReuse() {
+        avatarImage.image = nil
+        userLogin.text = nil
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
+        backgroundColor = .white
         selectionStyle = .none
+        buildHierarchy()
+        buildConstraints()
+    }
+    
+    // MARK: - Private Methods
+
+    private func buildHierarchy() {
         stackView.addArrangedSubview(userLogin)
         stackView.addArrangedSubview(avatarImage)
         addSubview(stackView)
+    }
+
+    private func buildConstraints() {
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            
-            avatarImage.heightAnchor.constraint(equalToConstant: 70),
             avatarImage.widthAnchor.constraint(equalToConstant: 70)
         ])
     }
-    
-    // MARK: - Private Methods
-    
+
     private func image(url: String) {
         guard let url = URL(string: url) else { return }
         DispatchQueue.global().async {

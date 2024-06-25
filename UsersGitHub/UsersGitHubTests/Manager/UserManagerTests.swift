@@ -8,64 +8,96 @@
 @testable import UsersGitHub
 import XCTest
 
-class UserManagerTests: XCTestCase {
-    var session: URLSession!
-    var manager: UserManager!
-    
+final class UserManagerTests: XCTestCase {
+    var sut: UserManager!
+    var networkMock: UserOperationMock!
+
     override func setUp() {
         super.setUp()
-        session = URLSession.shared
-        manager = UserManager(session: session)
+        networkMock = UserOperationMock()
+        sut = UserManager(network: networkMock)
     }
-    
+
     override func tearDown() {
-        session = nil
-        manager = nil
+        sut = nil
+        networkMock = nil
         super.tearDown()
     }
-    
-    func testFetchUser() {
-        let expectation = XCTestExpectation(description: "fetch")
-        manager.fetchUser { result in
-            switch result {
-            case .success(let users):
-                XCTAssertFalse(users.isEmpty)
-            case .failure(let error):
-                XCTFail("Failed to fetch users with error: \(error.localizedDescription)")
-            }
+
+    func testFetchUserSuccess() {
+        let expectedUsers = UsersModel.fixture()
+        networkMock.successMock = expectedUsers
+
+        let expectation = expectation(description: "fetchUser completion")
+        var result: Result<[UsersModel]?, any Error>?
+
+        sut.fetchUser { response in
+            result = response
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 5.0)
+
+        waitForExpectations(timeout: 1) { _ in
+            switch result {
+            case .success(let data):
+                XCTAssertEqual(data, expectedUsers)
+            case .failure(let error):
+                XCTFail("Expected success but got \(error)")
+            case .none:
+                XCTFail("Expected success but got nil")
+            }
+        }
     }
-    
+
     func testSearchUser() {
         let searchQuery = "miguelflopes"
-        let expectation = XCTestExpectation(description: "search")
-        manager.searchUser(search: searchQuery) { result in
+        let expectedSearchData = SearchUserModel.fixture()
+        networkMock.successMock = expectedSearchData
+
+        let expectation = expectation(description: "search completion")
+        var result: Result<SearchUserModel?, any Error>?
+
+        sut.searchUser(search: searchQuery) { response in
+            result = response
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1) { _ in
             switch result {
-            case .success(let searchUser):
-                XCTAssertEqual(searchUser.users?.first?.login, searchQuery)
+            case .success(let data):
+                XCTAssertEqual(data?.users?.first?.login, searchQuery)
+                XCTAssertEqual(data, expectedSearchData)
             case .failure(let error):
                 XCTFail("Failed to search user with error: \(error.localizedDescription)")
+            case .none:
+                XCTFail("Expected success but got nil")
             }
+        }
+    }
+
+    func testFetchUserDetails() {
+        let userName = "miguelflopes"
+        let expectedUserDetail = UserDetailModel.fixture()
+        networkMock.successMock = expectedUserDetail
+
+        let expectation = expectation(description: "details completion")
+        var result: Result<[UserDetailModel]?, any Error>?
+
+        sut.fetchUserDetails(userName: userName) { response in
+            result = response
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 5.0)
-    }
-    
-    func testFetchUserDetails() {
-        let userName = "miguel"
-        let expectation = XCTestExpectation(description: "FetchDetails")
-        manager.fetchUserDetails(userName: userName) { result in
+
+        waitForExpectations(timeout: 1) { _ in
             switch result {
-            case .success(let userDetails):
-                XCTAssertFalse(userDetails.isEmpty)
-                XCTAssertEqual(userDetails.first?.owner?.login, userName)
+            case .success(let data):
+                XCTAssertEqual(data?.first?.owner?.login, userName)
+                XCTAssertEqual(data, expectedUserDetail)
+
             case .failure(let error):
                 XCTFail("Failed to fetch user details with error: \(error.localizedDescription)")
+            case .none:
+                XCTFail("Expected success but got nil")
             }
-            expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 5.0)
     }
 }

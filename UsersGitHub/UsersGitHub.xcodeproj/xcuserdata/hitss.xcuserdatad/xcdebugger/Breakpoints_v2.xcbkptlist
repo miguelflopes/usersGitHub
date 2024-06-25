@@ -7,49 +7,351 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2F850E6F-8775-444E-B84B-6F50BBE21E90"
+            uuid = "7D2B89FB-C153-451B-90FB-4E9B4FEF5FAB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UsersGitHub/Coordinator/MainCoordinator.swift"
+            filePath = "UsersGitHub/Manager/UserManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "startFlowUserViewController()"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "fetchUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "795E1E22-C3FF-4F59-88BB-EA3D04F3473C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/Manager/UserManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "fetchUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C36D354A-1C0A-42A3-83F5-ED4CB4D6F0CF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/Manager/UserManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "fetchUser(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "2F850E6F-8775-444E-B84B-6F50BBE21E90 - 804fe9bc78c6377b"
+                  uuid = "C36D354A-1C0A-42A3-83F5-ED4CB4D6F0CF - fec65fa5cdf0fd7f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "UsersGitHub.MainCoordinator.startFlowUserViewController() -&gt; ()"
+                  symbolName = "UsersGitHub.UserManager.fetchUser(completion: (Swift.Result&lt;Swift.Array&lt;UsersGitHub.UsersModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "UsersGitHub"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hitss/Documents/Miguel/UsersGitHub/UsersGitHub/Coordinator/MainCoordinator.swift"
+                  urlString = "file:///Users/hitss/Downloads/usersGitHub-main/UsersGitHub/UsersGitHub/Manager/UserManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "105">
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "472">
                </Location>
                <Location
-                  uuid = "2F850E6F-8775-444E-B84B-6F50BBE21E90 - 3b0521dcf5b6b560"
+                  uuid = "C36D354A-1C0A-42A3-83F5-ED4CB4D6F0CF - 15844f15d971c416"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #2 (Swift.String) -&gt; () in implicit closure #1 (UsersGitHub.MainCoordinator) -&gt; (Swift.String) -&gt; () in UsersGitHub.MainCoordinator.startFlowUserViewController() -&gt; ()"
+                  symbolName = "closure #1 @Sendable () -&gt; () in UsersGitHub.UserManager.fetchUser(completion: (Swift.Result&lt;Swift.Array&lt;UsersGitHub.UsersModel&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "UsersGitHub"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hitss/Documents/Miguel/UsersGitHub/UsersGitHub/Coordinator/MainCoordinator.swift"
+                  urlString = "file:///Users/hitss/Downloads/usersGitHub-main/UsersGitHub/UsersGitHub/Manager/UserManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "31"
                   endingLineNumber = "31"
-                  offsetFromSymbolStart = "40">
+                  offsetFromSymbolStart = "68">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EE4D475F-298D-4CB2-B451-42D1D5EF8D3A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/ViewModel/UsersViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "search(search:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EE4D475F-298D-4CB2-B451-42D1D5EF8D3A - b81cff864e430aaa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Optional&lt;UsersGitHub.SearchUserModel&gt;, Swift.Error&gt;) -&gt; () in UsersGitHub.UsersViewModel.search(search: Swift.String) -&gt; ()"
+                  moduleName = "UsersGitHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hitss/Downloads/usersGitHub-main/UsersGitHub/UsersGitHub/ViewModel/UsersViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  uuid = "EE4D475F-298D-4CB2-B451-42D1D5EF8D3A - b81cff864e430aaa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Optional&lt;UsersGitHub.SearchUserModel&gt;, Swift.Error&gt;) -&gt; () in UsersGitHub.UsersViewModel.search(search: Swift.String) -&gt; ()"
+                  moduleName = "UsersGitHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hitss/Downloads/usersGitHub-main/UsersGitHub/UsersGitHub/ViewModel/UsersViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "456">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5AB60724-94B9-44C7-88B4-A2DE2A5FBA61"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/View/Cells/UserTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "setupView(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9649CF09-E454-4685-89FD-59AE1FA860D6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/View/UserView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "searchTextFieldDidChange(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C507497D-BF2D-4535-BDB7-5CAB307B1E9C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/View/UserView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "searchTextFieldDidChange(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5383495-F2A7-4CD3-BF13-DFEBFCAE2146"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/View/UserView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "loadingView(isLoading:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E5383495-F2A7-4CD3-BF13-DFEBFCAE2146 - 60d4850b7ad29e39"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UsersGitHub.UserView.loadingView(isLoading: Swift.Bool) -&gt; ()"
+                  moduleName = "UsersGitHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hitss/Downloads/usersGitHub-main/UsersGitHub/UsersGitHub/View/UserView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "E5383495-F2A7-4CD3-BF13-DFEBFCAE2146 - 60d4850b7ad29dd8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UsersGitHub.UserView.loadingView(isLoading: Swift.Bool) -&gt; ()"
+                  moduleName = "UsersGitHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hitss/Downloads/usersGitHub-main/UsersGitHub/UsersGitHub/View/UserView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "E5383495-F2A7-4CD3-BF13-DFEBFCAE2146 - 60d4850b7ad29e67"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UsersGitHub.UserView.loadingView(isLoading: Swift.Bool) -&gt; ()"
+                  moduleName = "UsersGitHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hitss/Downloads/usersGitHub-main/UsersGitHub/UsersGitHub/View/UserView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "988B78A8-2F5F-4541-959A-3A57512374B9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/View/UserView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "loadingView(isLoading:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "988B78A8-2F5F-4541-959A-3A57512374B9 - 60d4850b7ad29e44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UsersGitHub.UserView.loadingView(isLoading: Swift.Bool) -&gt; ()"
+                  moduleName = "UsersGitHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hitss/Downloads/usersGitHub-main/UsersGitHub/UsersGitHub/View/UserView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "988B78A8-2F5F-4541-959A-3A57512374B9 - 60d4850b7ad29e67"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UsersGitHub.UserView.loadingView(isLoading: Swift.Bool) -&gt; ()"
+                  moduleName = "UsersGitHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hitss/Downloads/usersGitHub-main/UsersGitHub/UsersGitHub/View/UserView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "988B78A8-2F5F-4541-959A-3A57512374B9 - 60d4850b7ad29ea5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UsersGitHub.UserView.loadingView(isLoading: Swift.Bool) -&gt; ()"
+                  moduleName = "UsersGitHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hitss/Downloads/usersGitHub-main/UsersGitHub/UsersGitHub/View/UserView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC8216C0-CC7B-430A-836C-4906700F6C9B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/ViewController/UsersViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "loading(isLoading:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49DC41D0-43C8-4AC3-892E-5315FAB6B78F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/ViewController/UsersViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "setupView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B3F8F14-1F0E-401D-9F21-C646F9495255"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UsersGitHub/DataSource/UsersDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -8,7 +8,7 @@
 @testable import UsersGitHub
 import XCTest
 
-class MainCoordinatorTests: XCTestCase {
+final class MainCoordinatorTests: XCTestCase {
 
     func testStartFlowUserViewController() {
         let navigationController = MockNavigationController()
@@ -28,6 +28,7 @@ class MainCoordinatorTests: XCTestCase {
         XCTAssertTrue(navigationController.viewControllers.count == 1)
         XCTAssertTrue(navigationController.viewControllers.last is UserDetailViewController)
         let userDetailViewController = navigationController.viewControllers.last as? UserDetailViewController
+        userDetailViewController?.loadView()
         XCTAssertEqual(userDetailViewController?.title, userLogin)
     }
 

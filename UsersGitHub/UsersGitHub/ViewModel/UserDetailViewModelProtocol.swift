@@ -12,7 +12,6 @@ protocol UserDetailViewModelProtocol {
     // MARK: - Properties
     
     var delegate: UserDetailViewModelDelegate? { get set }
-    var coordinator: MainCoordinatorProtocol { get set }
     
     // MARK: - Methods
     

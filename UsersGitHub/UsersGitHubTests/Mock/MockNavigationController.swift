@@ -8,7 +8,7 @@
 @testable import UsersGitHub
 import XCTest
 
-class MockNavigationController: UINavigationController {
+final class MockNavigationController: UINavigationController {
     var pushedViewController: UIViewController?
     var presentedController: UIViewController?
     

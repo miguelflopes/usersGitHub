@@ -8,20 +8,26 @@
 import Foundation
 @testable import UsersGitHub
 
-class UserManagerMock: UserManagerProtocol {
-    var fetchUserResult: Result<[UsersModel], Error>!
-    var searchUserResult: Result<SearchUserModel, Error>!
-    var fetchUserDetailsResult: Result<[UserDetailModel], Error>!
+final class UserManagerMock: UserManagerProtocol {
+    var fetchUserResult: Result<[UsersModel]?, Error>!
+    var searchUserResult: Result<SearchUserModel?, Error>!
+    var fetchUserDetailsResult: Result<[UserDetailModel]?, Error>!
     
-    func fetchUser(completion: @escaping (Result<[UsersModel], Error>) -> Void) {
+    private(set) var fetchUserCount = 0
+    func fetchUser(completion: @escaping UsersCompletion) {
+        fetchUserCount += 1
         completion(fetchUserResult)
     }
     
-    func searchUser(search: String, completion: @escaping (Result<SearchUserModel, Error>) -> Void) {
+    private(set) var searchUserCount = 0
+    func searchUser(search: String, completion: @escaping SearchUserCompletion) {
+        searchUserCount += 1
         completion(searchUserResult)
     }
     
-    func fetchUserDetails(userName: String, completion: @escaping (Result<[UserDetailModel], Error>) -> Void) {
+    private(set) var fetchUserDetailsCount = 0
+    func fetchUserDetails(userName: String, completion: @escaping UserDetailsCompletion) {
+        fetchUserDetailsCount += 1
         completion(fetchUserDetailsResult)
     }
 }

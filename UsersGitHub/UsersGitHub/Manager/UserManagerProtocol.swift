@@ -10,10 +10,13 @@ import Foundation
 // MARK: - UserManagerProtocol
 
 public protocol UserManagerProtocol {
-    
+    typealias UsersCompletion = (Result<[UsersModel]?, Error>) -> Void
+    typealias SearchUserCompletion = (Result<SearchUserModel?, Error>) -> Void
+    typealias UserDetailsCompletion = (Result<[UserDetailModel]?, Error>) -> Void
+
     // MARK: - Functions
     
-    func fetchUser(completion: @escaping (Result<[UsersModel], Error>) -> Void)
-    func searchUser(search: String, completion: @escaping (Result<SearchUserModel, Error>) -> Void)
-    func fetchUserDetails(userName: String, completion: @escaping (Result<[UserDetailModel], Error>) -> Void)
+    func fetchUser(completion: @escaping UsersCompletion)
+    func searchUser(search: String, completion: @escaping SearchUserCompletion)
+    func fetchUserDetails(userName: String, completion: @escaping UserDetailsCompletion)
 }

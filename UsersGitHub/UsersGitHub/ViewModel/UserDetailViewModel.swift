@@ -8,8 +8,9 @@
 import Foundation
 
 protocol UserDetailViewModelDelegate: AnyObject {
-    func onUsersFetchSuccess(_ userDetail: [UserDetailModel])
+    func onUsersFetchSuccess(_ userDetail: [UserDetailModel]?)
     func onUsersFetchError(_ errorTitle: String, _ errorMessage: String)
+    func loading(isLoading _: Bool)
 }
 
 final class UserDetailViewModel: UserDetailViewModelProtocol {
@@ -17,8 +18,7 @@ final class UserDetailViewModel: UserDetailViewModelProtocol {
     // MARK: - Public Properties
     
     weak var delegate: UserDetailViewModelDelegate?
-    var coordinator: MainCoordinatorProtocol
-    
+
     // MARK: - Private Properties
     
     private let manager: UserManagerProtocol
@@ -26,30 +26,37 @@ final class UserDetailViewModel: UserDetailViewModelProtocol {
     
     // MARK: - Initializer
     
-    init(userName: String, coordinator: MainCoordinatorProtocol, manager: UserManagerProtocol = UserManager()) {
+    init(userName: String, 
+         manager: UserManagerProtocol = UserManager(session: .shared, apiClient: PathAPI()))
+    {
         self.manager = manager
-        self.coordinator = coordinator
         self.userName = userName
     }
     
     /// Call manager to fetch users details in api
     func fetchUserDetails() {
+        delegate?.loading(isLoading: true)
         manager.fetchUserDetails(userName: userName) { [weak self] result in
             sleep(1) // Force loading
             guard let self = self else { return }
             switch result {
             case .success(let userDetail):
-                self.delegate?.onUsersFetchSuccess(userDetail)
+                self.handlerSuccess(userDetail)
             case .failure(let error):
                 self.handlerError(error)
             }
         }
     }
     
+    private func handlerSuccess(_ userDetail: [UserDetailModel]?) {
+        delegate?.loading(isLoading: false)
+        self.delegate?.onUsersFetchSuccess(userDetail)
+    }
+    
     private func handlerError(_ error: Error) {
         // Pode ser criado uma unica mensagem de error para o usuario, ou então de acordo com o tipo de erro abaixo.
         // Existe varias maneiras de capturar o erro e mostrar para o usuario de forma mais amigavel.
-        
+        delegate?.loading(isLoading: false)
         var mensageError: String
         guard let error = error as? NetworkError else { return }
         switch error {

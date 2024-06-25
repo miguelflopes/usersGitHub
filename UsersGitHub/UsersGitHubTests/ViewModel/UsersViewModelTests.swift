@@ -8,31 +8,29 @@
 @testable import UsersGitHub
 import XCTest
 
-class UsersViewModelTests: XCTestCase {
+final class UsersViewModelTests: XCTestCase {
     
     // MARK: - Properties
     
     var coodinator: MainCoordinator!
-    var viewModel: UsersViewModel!
+    var sut: UsersViewModel!
     var mockManager: UserManagerMock!
     var mockDelegate: UsersViewModelDelegateMock!
 
-    let users: [UsersModel] = [UsersModel(login: "miguel", id: 1234, nodeId: String(), avatarUrl: String(), gravatarId: String(), url: String(), htmlUrl: String(), followersUrl: String(), followingUrl: String(), gistsUrl: String(), starredUrl: String(), subscriptionsUrl: String(), organizationsUrl: String(), reposUrl: String(), eventsUrl: String(), receivedEventsUrl: String(), type: String(), siteAdmin: false, score: .zero)]
-    
     // MARK: - Setup
     
     override func setUp() {
         super.setUp()
         mockManager = UserManagerMock()
         coodinator = MainCoordinator(navigationController: MockNavigationController())
-        viewModel = UsersViewModel(coordinator: coodinator, manager: mockManager)
+        sut = UsersViewModel(manager: mockManager)
         mockDelegate = UsersViewModelDelegateMock()
-        viewModel.delegate = mockDelegate
+        sut.delegate = mockDelegate
     }
     
     override func tearDown() {
         coodinator = nil
-        viewModel = nil
+        sut = nil
         mockManager = nil
         mockDelegate = nil
         super.tearDown()
@@ -41,56 +39,44 @@ class UsersViewModelTests: XCTestCase {
     // MARK: - Tests
     
     func testFetchUsersSuccess() {
-        mockManager.fetchUserResult = .success(users)
-        viewModel.fetchUsers()
-        XCTAssertEqual(mockDelegate.users, users)
+        mockManager.fetchUserResult = .success(UsersModel.fixture())
+        sut.fetchUsers()
+        XCTAssertEqual(mockDelegate.users, UsersModel.fixture())
+        XCTAssertEqual(mockManager.fetchUserCount, 1)
     }
     
     func testFetchUsersFailure() {
         let error = NetworkError.invalidURL
         mockManager.fetchUserResult = .failure(error)
-        viewModel.fetchUsers()
+        sut.fetchUsers()
         XCTAssertEqual(mockDelegate.errorTitle, StringHelper.errorTitleAlert)
         XCTAssertEqual(mockDelegate.errorMessage, StringHelper.errorAlert)
+        XCTAssertEqual(mockManager.fetchUserCount, 1)
     }
     
     func testSearchSuccess() {
-        let result = SearchUserModel(totalCount: .zero, incompleteResults: false, users: users)
+        let result = SearchUserModel(totalCount: .zero, incompleteResults: false, users: UsersModel.fixture())
         mockManager.searchUserResult = .success(result)
-        viewModel.search(search: "miguel")
-        XCTAssertEqual(mockDelegate.users, users)
+        sut.search(search: "miguel")
+        XCTAssertEqual(mockDelegate.users, UsersModel.fixture())
+        XCTAssertEqual(mockManager.searchUserCount, 1)
     }
     
     func testSearchEmptyResult() {
         let result = SearchUserModel(totalCount: .zero, incompleteResults: false, users: [])
         mockManager.searchUserResult = .success(result)
-        viewModel.search(search: "miguel")
+        sut.search(search: "miguel")
         XCTAssertEqual(mockDelegate.errorTitle, StringHelper.errorTitleAlert)
         XCTAssertEqual(mockDelegate.errorMessage, StringHelper.errorSearchMessageAlert)
+        XCTAssertEqual(mockManager.searchUserCount, 1)
     }
     
     func testSearchFailure() {
         let error = NetworkError.invalidURL
         mockManager.searchUserResult = .failure(error)
-        viewModel.search(search: "miguel")
+        sut.search(search: "miguel")
         XCTAssertEqual(mockDelegate.errorTitle, StringHelper.errorTitleAlert)
         XCTAssertEqual(mockDelegate.errorMessage, StringHelper.errorAlert)
-    }
-}
-
-// MARK: - UsersViewModelDelegateMock
-
-class UsersViewModelDelegateMock: UsersViewModelDelegate {
-    var users: [UsersModel]?
-    var errorTitle: String?
-    var errorMessage: String?
-    
-    func onUsersFetchSuccess(_ users: [UsersModel]) {
-        self.users = users
-    }
-    
-    func onUsersFetchError(_ title: String, _ message: String) {
-        errorTitle = title
-        errorMessage = message
+        XCTAssertEqual(mockManager.searchUserCount, 1)
     }
 }

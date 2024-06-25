@@ -9,83 +9,51 @@ import Foundation
 
 final class UserManager: UserManagerProtocol {
     private let session: URLSession
+    private let apiClient: PathAPIProtocol
+    private let network: NetworkProtocol
     private let task = OperationQueue()
-    
-    init(session: URLSession = .shared) {
+
+    init(network: NetworkProtocol = Network(),
+         session: URLSession = .shared,
+         apiClient: PathAPIProtocol = PathAPI())
+    {
+        self.network = network
         self.session = session
+        self.apiClient = apiClient
     }
-    
-    func fetchUser(completion: @escaping (Result<[UsersModel], Error>) -> Void) {
-        guard let url = URL(string: ApplicationConstants.PathAPI().users) else {
+
+    func fetchUser(completion: @escaping UsersCompletion) {
+        guard let url = URL(string: apiClient.users) else {
             completion(.failure(NetworkError.invalidURL))
             return
         }
-        let operation = UserOperation<[UsersModel]>(session: session, url: url)
-        operation.completionBlock = { [weak operation] in
-            if let error = operation?.error {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            } else if let user = operation?.result {
-                DispatchQueue.main.async {
-                    completion(.success(user))
-                }
-            } else {
-                DispatchQueue.main.async {
-                    completion(.failure(NetworkError.unknownError))
-                }
-            }
+        let operation = BlockOperation {
+            self.network.execute(session: self.session, url: url, completion: completion)
         }
         task.addOperation(operation)
     }
-    
-    func searchUser(search: String, completion: @escaping (Result<SearchUserModel, Error>) -> Void) {
-        guard let url = URL(string: ApplicationConstants.PathAPI().userSearch.appending(search)) else {
+
+    func searchUser(search: String, completion: @escaping SearchUserCompletion) {
+        guard let url = URL(string: apiClient.userSearch.appending(search)) else {
             completion(.failure(NetworkError.invalidURL))
             return
         }
         task.cancelAllOperations()
-        let operation = UserOperation<SearchUserModel>(session: session, url: url)
-        operation.completionBlock = { [weak operation] in
-            if let error = operation?.error {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            } else if let user = operation?.result {
-                DispatchQueue.main.async {
-                    completion(.success(user))
-                }
-            } else {
-                DispatchQueue.main.async {
-                    completion(.failure(NetworkError.unknownError))
-                }
-            }
+        let operation = BlockOperation {
+            self.network.execute(session: self.session, url: url, completion: completion)
         }
         task.addOperation(operation)
     }
-    
-    func fetchUserDetails(userName: String, completion: @escaping (Result<[UserDetailModel], Error>) -> Void) {
-        let baseURL = ApplicationConstants.PathAPI().usersDetail.replaceStringToURL(occurrence: "*", with: userName)
+
+    func fetchUserDetails(userName: String, completion: @escaping UserDetailsCompletion) {
+        let baseURL = apiClient.usersDetail.replaceStringToURL(occurrence: "*", with: userName)
         guard let url = baseURL else {
             completion(.failure(NetworkError.invalidURL))
             return
         }
         task.cancelAllOperations()
-        let operation = UserOperation<[UserDetailModel]>(session: session, url: url)
-        operation.completionBlock = { [weak operation] in
-            if let error = operation?.error {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            } else if let user = operation?.result {
-                DispatchQueue.main.async {
-                    completion(.success(user))
-                }
-            } else {
-                DispatchQueue.main.async {
-                    completion(.failure(NetworkError.unknownError))
-                }
-            }
+        let operation = BlockOperation {
+            self.network.execute(session: self.session, url: url, completion: completion)
         }
         task.addOperation(operation)
     }

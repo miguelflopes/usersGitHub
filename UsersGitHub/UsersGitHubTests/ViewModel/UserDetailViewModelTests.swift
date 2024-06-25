@@ -8,7 +8,7 @@
 @testable import UsersGitHub
 import XCTest
 
-class UserDetailViewModelTests: XCTestCase {
+final class UserDetailViewModelTests: XCTestCase {
     
     // MARK: - Properties
     
@@ -23,7 +23,7 @@ class UserDetailViewModelTests: XCTestCase {
         super.setUp()
         mockManager = UserManagerMock()
         coodinator = MainCoordinator(navigationController: MockNavigationController())
-        viewModel = UserDetailViewModel(userName: "miguel", coordinator: coodinator, manager: mockManager)
+        viewModel = UserDetailViewModel(userName: "miguel", manager: mockManager)
         mockDelegate = UserDetailViewModelDelegateMock()
         viewModel.delegate = mockDelegate
     }
@@ -39,9 +39,9 @@ class UserDetailViewModelTests: XCTestCase {
     // MARK: - Tests
     
     func testFetchUserDetailsSuccess() {
-        mockManager.fetchUserDetailsResult = .success([userDetailMock])
+        mockManager.fetchUserDetailsResult = .success(UserDetailModel.fixture())
         viewModel.fetchUserDetails()
-        XCTAssertEqual(mockDelegate.userDetail, [userDetailMock])
+        XCTAssertEqual(mockDelegate.userDetail, UserDetailModel.fixture())
     }
     
     func testFetchUserDetailsFailure() {
@@ -50,22 +50,5 @@ class UserDetailViewModelTests: XCTestCase {
         viewModel.fetchUserDetails()
         XCTAssertEqual(mockDelegate.errorTitle, StringHelper.errorTitleAlert)
         XCTAssertEqual(mockDelegate.errorMessage, StringHelper.errorAlert)
-    }
-}
-
-// MARK: - UserDetailViewModelDelegateMock
-
-class UserDetailViewModelDelegateMock: UserDetailViewModelDelegate {
-    var userDetail: [UserDetailModel]?
-    var errorTitle: String?
-    var errorMessage: String?
-    
-    func onUsersFetchSuccess(_ userDetail: [UserDetailModel]) {
-        self.userDetail = userDetail
-    }
-    
-    func onUsersFetchError(_ title: String, _ message: String) {
-        errorTitle = title
-        errorMessage = message
     }
 }
